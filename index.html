@@ -10,39 +10,37 @@
 <body>
     <div id="navbar">
         <div id="toggle-button">
-            <span></span>
-            <span></span>
-            <span></span>
+            <img src="SVGs/align-justify.svg">
         </div>
         <div id="brand-name">
             <p>Todo List</p>
         </div>
     </div>
 
-    <div id="content">
+    <div id="container">
         <div id="sidebar">
-            <ul>
-                <div class="sidebar-element">
-                    <img src="SVGs/inbox.svg">
-                    <li>inbox</li>
-                </div>
-                <div class="sidebar-element">
-                    <img src="SVGs/inbox.svg">
-                    <li>Today</li>
-                </div>
-                <div class="sidebar-element">
-                    <img src="SVGs/project.svg">
-                    <li>
-                        <p>Projects</p>
-                        <ul>
-                            <li>Add new Project</li>
-                        </ul>
-                    </li>
-                </div>
-            </ul>
+            <div class="sidebar-element">
+                <img src="SVGs/inbox.svg">
+                <p>inbox</p>
+            </div>
+            <div class="sidebar-element">
+                <img src="SVGs/calendar.svg">
+                <p>Today</p>
+            </div>
+            <div class="sidebar-element">
+                <img src="SVGs/folder.svg">
+                <p>Projects</p>
+                <img src="SVGs/down.svg" class="left-padding">
+            </div>
+            <div class="sidebar-element left-padding" id="plus"> 
+                <img src="SVGs/plus.svg">    
+                <ul>
+                    <li>new Project</li>
+                </ul>
+            </div>
+            
         </div>
         <div id="tasks">
-
         </div>
     </div>
 </body>
