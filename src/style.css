@@ -13,14 +13,13 @@
 }
 
 
-
-
-
 :root{
     --navbar-color : #DC4D3D;
     --sidebar-color: #F7F7F7;
     --content-color: #FEFEFE;
     --brandName-color : #FEFEFE;
+    --toggleButtonHover-color:#E27065;
+    --sidebarHove-color:#dfdcdc;
 }
 
 html,body{
@@ -46,6 +45,8 @@ body{
     flex-direction: column;
 }
 
+/***************************************************Navbar******************************************/
+
 #navbar{
     background-color: var(--navbar-color);
     display: flex;
@@ -63,22 +64,18 @@ body{
 
 #toggle-button{
     padding: 1px 1px 0 1px;
-    border-radius: 1px;
+    border-radius: 10px;
 }
 
 #toggle-button:hover{
-    background-color: #E27065;
+    background-color: var(--toggleButtonHover-color);
 }
 
-
+/****************************************************Sidebar*****************************************/
 #container{
     flex : 1;
     background-color: var(--content-color);
     display: flex;
-}
-
-#tasks{
-    flex: 1;
 }
 
 #sidebar{
@@ -106,18 +103,83 @@ body{
 }
 
 .sidebar-element:hover{
-    background-color: #dfdcdc;
+    background-color: var(--sidebarHove-color);
     cursor: pointer;
 }
 
 #plus:hover{
-    color: red;
+    color: var(--navbar-color);
     background-color: var(--sidebar-color)
+}
+
+
+/**********************************************tasks***************************************/
+#tasks{
+    flex: 1;
+    padding: 50px 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#title{
+    font-family: "contentFont";
+    font-size: 2.5rem;
+}
+
+.task{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 5px;
+}
+
+.task-info{
+    display: flex;
+    align-items: center;
+}
+
+.task-info:hover{
+    cursor: pointer;
+}
+
+.task-info img{
+    padding: 8px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.task-info img:hover{
+    background-color: var(--sidebar-color);
+}
+
+.task-info p{
+    padding-left: 10px;
+    font-size: 1.2rem;
 }
 
 
 
 
+
+
+/*******************************************Add Task Button************************************/
+
+#tasks button{
+    font-size: 1.5rem;
+    padding: 10px;
+    background-color: var(--content-color);
+    border: none;
+    font-family: 'contentFont';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#tasks button:hover{
+    background-color: var(--sidebar-color);
+}
 
 
 
