@@ -5,6 +5,17 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'contentFont';
+    src: url('./fonts/Roboto-Medium.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+
+
+
 :root{
     --navbar-color : #DC4D3D;
     --sidebar-color: #F7F7F7;
@@ -17,9 +28,10 @@ html,body{
     padding: 0;
     min-height: 100vh;
     font-size: 18px;
+    box-sizing: border-box;
 }
 
-p{
+p,ul,img{
     margin: 0;
     padding: 0;
 }
@@ -50,22 +62,16 @@ body{
 }
 
 #toggle-button{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
+    padding: 1px 1px 0 1px;
+    border-radius: 1px;
+}
+
+#toggle-button:hover{
+    background-color: #E27065;
 }
 
 
-#toggle-button span{
-    height: 3px;
-    width: 100%;
-    background-color: white;
-    border-radius: 10px;
-}
-
-#content{
+#container{
     flex : 1;
     background-color: var(--content-color);
     display: flex;
@@ -76,24 +82,43 @@ body{
 }
 
 #sidebar{
-    padding-right: 40px;
+    padding: 20px 50px 20px 40px;
     background-color: var(--sidebar-color);
-}
-
-#sidebar ul , #sidebar li:last-child{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
+    align-items: stretch;
 }
 
 .sidebar-element{
     display: flex;
-    gap: 10px;
+    flex-direction: row;
+    gap: 15px;
+    font-family: 'contentFont';
+    align-items: center;
+    font-size: 1.1rem;
+    padding: 5px;
+    border-radius: 5px;
 }
 
-.sidebar-element ul{
-    padding-left: 20px;
+.left-padding{
+    padding-left: 50px;
 }
+
+.sidebar-element:hover{
+    background-color: #dfdcdc;
+    cursor: pointer;
+}
+
+#plus:hover{
+    color: red;
+    background-color: var(--sidebar-color)
+}
+
+
+
+
+
 
 
 
