@@ -27,22 +27,22 @@
                 <img src="SVGs/calendar.svg">
                 <p>Today</p>
             </div>
-            <div class="sidebar-element">
+            <div class="sidebar-element" id="showProjects">
                 <img src="SVGs/folder.svg">
                 <p>Projects</p>
                 <img src="SVGs/down.svg" class="left-padding">
             </div>
-            <div class="sidebar-element left-padding" id="plus"> 
-                <img src="SVGs/plus.svg">    
-                <ul>
-                    <li>new Project</li>
-                </ul>
+            <div class=" left-padding hide-element" id="projectList">  
+                <div id="addProject">
+                    <img src="SVGs/plus.svg"> 
+                    <p>new Project</p>
+                </div>
             </div>
             
         </div>
         <div id="tasks">
             <p id="title">Tasks</p>
-            <div class="task bottom-padding">
+            <!-- <div class="task bottom-padding">
                 <div class="task-info">
                     <input type="checkbox">
                     <p>Study the grid system</p>
@@ -53,7 +53,7 @@
                     <img src="SVGs/arrow-right-circle.svg" title="Move to project" alt="Move to project">
                     <img src="SVGs/trash.svg" title="Delete" alt="Delete">
                 </div>
-            </div>
+            </div> -->
             <button id="addNoteButton">
                 <img src="SVGs/plus-circle.svg">
                 Add Task
@@ -66,7 +66,7 @@
         <form id="form">
             <div id="form-info" class="bottom-padding">
                 <p>New Task</p>
-                <img src="SVGs/x-circle.svg" title="close">
+                <img  id="closeForm" src="SVGs/x-circle.svg" title="close">
             </div>
             <div id="form-content">
                 <div>
