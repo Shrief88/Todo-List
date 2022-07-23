@@ -10,4 +10,14 @@ const displayController = (()=>{
         const sidebar = document.querySelector('#sidebar');
         sidebar.classList.toggle('hide-element')
     })
+
+
+    // const addNoteButton = document.querySelector('#addNoteButton');
+
+    // addNoteButton.addEventListener('click',()=>{
+    //     const form = document.querySelector('#overlayForm');
+    //     form.setAttribute('style','display:flex');
+    // })
+
+
 })()
