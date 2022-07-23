@@ -21,6 +21,8 @@
     --toggleButtonHover-color:#E27065;
     --sidebarHove-color:#dfdcdc;
     --paddingBottom-color : #f0f0f0;
+    --inputBoarder-color:#CED4DA;
+    --inputFocus-color: #A7A7FD;
 }
 
 html,body{
@@ -52,7 +54,7 @@ body{
 }
 
 .left-padding{
-    padding-left: 50px;
+    padding-left: 40px !important;
 }
 
 .bottom-padding{
@@ -94,7 +96,7 @@ body{
 }
 
 #sidebar{
-    padding: 20px 50px 20px 40px;
+    padding: 20px 30px 20px 40px;
     background-color: var(--sidebar-color);
     display: flex;
     flex-direction: column;
@@ -114,16 +116,25 @@ body{
 }
 
 
-
 .sidebar-element:hover{
     background-color: var(--sidebarHove-color);
     cursor: pointer;
 }
 
-#plus:hover{
+#addProject:hover{
     color: var(--navbar-color);
-    background-color: var(--sidebar-color)
+    background-color: var(--sidebar-color);
+    cursor: pointer;
 }
+
+#projectList div{
+    display: flex;
+    align-items: center;
+    gap: 10px;  
+    font-family: 'contentFont';
+    font-size: 1.1rem;
+}
+
 
 
 /**********************************************tasks***************************************/
@@ -196,7 +207,7 @@ body{
 
 /************************************Add note form*****************************************/
 #overlayForm{
-    display: flex;
+    display: none;
     width: 100%;
     height: 100%;
     position: fixed;
@@ -218,6 +229,7 @@ form{
     gap : 15px;
     font-size: 1rem;
 }
+
 
 #form-info{
     display: flex;
@@ -254,12 +266,12 @@ form{
 .form-element input{
     border-radius: 10px;
     height: 40px;
-    border: 1px solid #CED4DA;
+    border: 1px solid var(--inputBoarder-color);
     font-size: 1rem;
 }
 
 .form-element input:focus ,.custome-select:focus , .form-element textarea:focus{
-    border-color: rgb(167, 167, 254);
+    border-color: var(--inputFocus-color);
     outline: none;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
@@ -267,7 +279,7 @@ form{
 .custome-select{
     border-radius: 10px;
     height: 40px;
-    border: 1px solid #CED4DA;
+    border: 1px solid var(--inputBoarder-color);
     background-color: white;
     font-size: 1rem;
     padding: 0 0 0 10px;
@@ -275,7 +287,7 @@ form{
 }
 
 .form-element textarea{
-    border: 1px solid #CED4DA;
+    border: 1px solid var(--inputBoarder-color);
     resize: vertical;
     font-size: 1rem;
 }    
@@ -292,7 +304,7 @@ form{
     margin: 20px auto 0 auto;
     background-color: white;
     border-radius: 10px;
-    border: 1px solid #CED4DA;
+    border: 1px solid var(--inputBoarder-color);
 }
 
 #form button:hover{

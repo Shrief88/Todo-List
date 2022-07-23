@@ -1,23 +1,15 @@
 import './style.css';
 import Task from './modules/task'
 import Project from './modules/project'
+import displayController from './modules/displayController'
 
 
-const displayController = (()=>{
-    const toggleButton = document.querySelector('#toggle-button');
+init();
 
-    toggleButton.addEventListener('click',()=>{
-        const sidebar = document.querySelector('#sidebar');
-        sidebar.classList.toggle('hide-element')
-    })
+function init(){
+    displayController();
+}
 
 
-    // const addNoteButton = document.querySelector('#addNoteButton');
-
-    // addNoteButton.addEventListener('click',()=>{
-    //     const form = document.querySelector('#overlayForm');
-    //     form.setAttribute('style','display:flex');
-    // })
 
 
-})()
