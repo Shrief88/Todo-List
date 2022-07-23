@@ -45,6 +45,11 @@ body{
     flex-direction: column;
 }
 
+.hide-element{
+    display: none !important; 
+
+}
+
 /***************************************************Navbar******************************************/
 
 #navbar{
