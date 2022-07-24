@@ -32,7 +32,7 @@
                 <p>Projects</p>
                 <img src="SVGs/down.svg" class="left-padding">
             </div>
-            <div class=" left-padding hide-element" id="projectList">  
+            <div class="left-padding hide-element" id="projectList">  
                 <div id="addProject">
                     <img src="SVGs/plus.svg"> 
                     <p>new Project</p>
@@ -40,20 +40,10 @@
             </div>
             
         </div>
-        <div id="tasks">
+        <div id="content">
             <p id="title">Tasks</p>
-            <!-- <div class="task bottom-padding">
-                <div class="task-info">
-                    <input type="checkbox">
-                    <p>Study the grid system</p>
-                </div>
-                <div class="task-info">
-                    <img src="SVGs/edit.svg" title="Edit" alt="Edit">
-                    <img src="SVGs/flag.svg" title="Change priority" alt="Change priority">
-                    <img src="SVGs/arrow-right-circle.svg" title="Move to project" alt="Move to project">
-                    <img src="SVGs/trash.svg" title="Delete" alt="Delete">
-                </div>
-            </div> -->
+            <div id="tasks"></div>
+            
             <button id="addNoteButton">
                 <img src="SVGs/plus-circle.svg">
                 Add Task
@@ -82,14 +72,14 @@
                 <div>
                     <div class="form-element">
                         <label for="due_date">Due date:</label>
-                        <input type="date">
+                        <input type="date" id="due_date" name="due_date">
                     </div>
                     <div class="form-element">
                         <label for="priority">Priority:</label>
                         <select class="custome-select" name="priority" id="priority">
                             <option value="low" selected>low</option>
-                            <option value="medium" selected>medium</option>
-                            <option value="high" selected>high</option>
+                            <option value="medium" >medium</option>
+                            <option value="high">high</option>
                         </select>
                     </div>
                     <div class="form-element">
@@ -100,7 +90,7 @@
                     </div>
                 </div>
             </div>
-            <button>Add Task</button>
+            <button id="submitTask"">Add Task</button>
         </form>
      </div>
 </body>

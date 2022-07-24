@@ -26,8 +26,9 @@ const displayController = (()=>{
     projectButton.addEventListener('click',()=>{
         const projectList = document.querySelector('#projectList');
         projectList.classList.toggle('hide-element');
-
     })
+
+    
 })
 
 export default displayController;
