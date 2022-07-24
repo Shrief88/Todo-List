@@ -3,10 +3,10 @@ import Task from './modules/task'
 import Project from './modules/project'
 import displayController from './modules/displayController'
 import createTask from './modules/taskComponent'
+import localStorageHandler from './modules/localStorage';
 
 
 init();
-
 
 
 
@@ -16,7 +16,6 @@ function init(){
     
     const form = document.querySelector('#form');
     form.addEventListener('submit',(e)=>{
-
         e.preventDefault(); //prevent the from submitting 
 
         let title = document.querySelector('#note-title').value;
@@ -30,9 +29,15 @@ function init(){
         const form = document.querySelector('#overlayForm');
         form.setAttribute('style','display:none');
 
-        console.log('fdfdf');
-
         createTask(newTask);
+        let myTasks = [];
+        if(localStorageHandler.getData('inbox')){
+            myTasks = localStorageHandler.getData('inbox');
+        }
+        myTasks.push(newTask);
+        localStorageHandler.setData("inbox",myTasks);
+
+
     })
 
 

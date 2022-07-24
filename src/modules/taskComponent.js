@@ -4,6 +4,7 @@ function createTask(task){
     const container = document.createElement('div');
     container.classList.add('task');
     container.classList.add('bottom-padding');
+    container.setAttribute('id',task.id);
 
     const taskInfo1 = document.createElement('div');
     taskInfo1.classList.add('task-info');

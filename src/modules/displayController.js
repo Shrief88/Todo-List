@@ -1,4 +1,18 @@
+import localStorageHandler from './localStorage';
+import createTask from './taskComponent'
+
 const displayController = (()=>{
+
+    let myTasks = [];
+    if(localStorageHandler.getData('inbox')){
+        myTasks = localStorageHandler.getData('inbox');
+    }
+    
+
+    for (const task of myTasks){
+        createTask(task);
+    }
+
     const toggleButton = document.querySelector('#toggle-button');
 
     toggleButton.addEventListener('click',()=>{
