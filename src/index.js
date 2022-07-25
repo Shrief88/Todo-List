@@ -14,8 +14,8 @@ init();
 function init(){
     displayController();
     
-    const form = document.querySelector('#form');
-    form.addEventListener('submit',(e)=>{
+    const taskForm = document.querySelector('#form');
+    taskForm.addEventListener('submit',(e)=>{
         e.preventDefault(); //prevent the from submitting 
 
         let title = document.querySelector('#note-title').value;
@@ -36,9 +36,9 @@ function init(){
         }
         myTasks.push(newTask);
         localStorageHandler.setData("inbox",myTasks);
-
-
     })
+
+    
 
 
     

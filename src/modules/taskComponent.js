@@ -38,7 +38,7 @@ function createimageField(src,title){
     img.setAttribute('src',src);
     img.setAttribute('title',title);
     img.setAttribute('alt',title);
-    img.setAttribute('id',title);
+    img.setAttribute('class',title);
     return img;
 }
 

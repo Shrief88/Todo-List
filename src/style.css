@@ -135,6 +135,23 @@ body{
     font-size: 1.1rem;
 }
 
+#project-form{
+    padding: 0;
+    background-color: var(--sidebar-color);
+}
+
+#project-form .form-element{
+    width: 100%;
+}
+
+#project-form .form-element input{
+    text-indent: 10px;
+}
+
+
+
+
+
 
 
 /**********************************************tasks***************************************/

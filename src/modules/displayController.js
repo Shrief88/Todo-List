@@ -42,6 +42,12 @@ const displayController = (()=>{
         projectList.classList.toggle('hide-element');
     })
 
+    const projectFormButton = document.querySelector('#addProject');
+    projectFormButton.addEventListener('click',()=>{
+        const projectForm = document.querySelector('#project-form');
+        projectForm.classList.toggle('hide-element');
+    })
+
     
 })
 
