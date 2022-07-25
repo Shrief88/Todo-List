@@ -1,19 +1,7 @@
-import localStorageHandler from './localStorage';
-import {createTask} from './taskComponent'
+//this file handle all user actions on the page that not related to entering new data
 
 const displayController = (()=>{
-    let myTasks = [];
-    if(localStorageHandler.getData('inbox')){
-        myTasks = localStorageHandler.getData('inbox');
-    }
-
-    for (const task of myTasks){
-        createTask(task);
-    }
-
-    let myProjects = [];
     
-
     const toggleButton = document.querySelector('#toggle-button');
     toggleButton.addEventListener('click',()=>{
         const sidebar = document.querySelector('#sidebar');

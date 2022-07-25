@@ -1,3 +1,5 @@
+//this file create the html code for new Task or new Project
+
 function createTask(task){
     const tasks = document.querySelector('#tasks');
 
@@ -49,6 +51,7 @@ function createProject(project){
     const p = document.createElement('p');
     p.textContent = project.title;
     container.appendChild(p);
+    container.setAttribute('id',project.id);
 
     projectList.insertBefore(container,projectList.firstChild);
 }

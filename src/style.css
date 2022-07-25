@@ -104,6 +104,10 @@ body{
     align-items: stretch;
 }
 
+.selected{
+    background-color: var(--sidebarHove-color);
+}
+
 .sidebar-element{
     display: flex;
     flex-direction: row;

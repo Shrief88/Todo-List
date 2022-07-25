@@ -1,13 +1,21 @@
 const localStorageHandler = (()=>{
-    const setData = (project,mytasks)=>{
-        localStorage.setItem(project,JSON.stringify(mytasks));
+    const setData = (project)=>{
+        localStorage.setItem(project.title,JSON.stringify(project.tasks));
     }
 
-    const getData = (project)=>{
-        return JSON.parse(localStorage.getItem(project));
+    const getData = (key)=>{
+        return JSON.parse(localStorage.getItem(key));
     }
 
-    return {setData , getData};
+    const getAllProject = ()=>{
+        let myProjects = [];
+        for (let i=0 ; i<localStorage.length;i++){
+            myProjects.push(localStorage.key(i));
+        }
+        return myProjects;
+    }
+
+    return {setData , getData , getAllProject};
 })()
 
 export default localStorageHandler;
