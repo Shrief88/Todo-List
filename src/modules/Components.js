@@ -49,9 +49,9 @@ function createProject(project){
 
     const container = document.createElement('div');
     const p = document.createElement('p');
-    p.textContent = project.title;
+    p.textContent = project;
     container.appendChild(p);
-    container.setAttribute('id',project.id);
+    container.setAttribute('id',project);
 
     projectList.insertBefore(container,projectList.firstChild);
 }

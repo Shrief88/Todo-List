@@ -28,10 +28,14 @@ function init(){
         createTask(task);
     }
 
+    //display all project in local storage
+    let myKeys = localStorageHandler.getAllkeys();
+    for(let i=1; i<myKeys.length;i++){
+       createProject(localStorageHandler.getProjectByIndex(i));
+    }
+
     displayController();
     formHandler();
-
-
 }
 
 

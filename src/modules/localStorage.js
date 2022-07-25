@@ -7,15 +7,15 @@ const localStorageHandler = (()=>{
         return JSON.parse(localStorage.getItem(key));
     }
 
-    const getAllProject = ()=>{
-        let myProjects = [];
-        for (let i=0 ; i<localStorage.length;i++){
-            myProjects.push(localStorage.key(i));
-        }
-        return myProjects;
+    const getAllkeys = ()=>{
+        return Object.keys(localStorage);
     }
 
-    return {setData , getData , getAllProject};
+    const getProjectByIndex = (index)=>{
+        return localStorage.key(index);
+    }
+
+    return {setData , getData , getAllkeys , getProjectByIndex};
 })()
 
 export default localStorageHandler;
