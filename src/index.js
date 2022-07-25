@@ -38,6 +38,18 @@ function init(){
         localStorageHandler.setData("inbox",myTasks);
     })
 
+    const projectForm = document.querySelector('#project-form');
+    projectForm.addEventListener('submit',(e)=>{
+        e.preventDefault();
+
+        let myTasks=[];
+        let title = document.querySelector('#project-title').value;    
+        localStorageHandler.setData(title,myTasks);
+        document.querySelector('#project-title').value = "";
+    })
+
+
+
     
 
 
