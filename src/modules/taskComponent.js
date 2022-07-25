@@ -42,19 +42,17 @@ function createimageField(src,title){
     return img;
 }
 
-export default createTask;
+function createProject(project){
+    const projectList = document.querySelector('#projectList');
+
+    const container = document.createElement('div');
+    const p = document.createElement('p');
+    p.textContent = project.title;
+    container.appendChild(p);
+
+    projectList.insertBefore(container,projectList.firstChild);
+}
+
+export {createTask,createProject};
 
 
-
-// <!-- <div class="task bottom-padding">
-//                 <div class="task-info">
-//                     <input type="checkbox">
-//                     <p>Study the grid system</p>
-//                 </div>
-//                 <div class="task-info">
-//                     <img src="SVGs/edit.svg" title="Edit" alt="Edit">
-//                     <img src="SVGs/flag.svg" title="Change priority" alt="Change priority">
-//                     <img src="SVGs/arrow-right-circle.svg" title="Move to project" alt="Move to project">
-//                     <img src="SVGs/trash.svg" title="Delete" alt="Delete">
-//                 </div>
-// </div> --></img>

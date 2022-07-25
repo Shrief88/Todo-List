@@ -1,17 +1,18 @@
 import localStorageHandler from './localStorage';
-import createTask from './taskComponent'
+import {createTask} from './taskComponent'
 
 const displayController = (()=>{
-
     let myTasks = [];
     if(localStorageHandler.getData('inbox')){
         myTasks = localStorageHandler.getData('inbox');
     }
-    
 
     for (const task of myTasks){
         createTask(task);
     }
+
+    let myProjects = [];
+    
 
     const toggleButton = document.querySelector('#toggle-button');
     toggleButton.addEventListener('click',()=>{
@@ -36,6 +37,10 @@ const displayController = (()=>{
     projectButton.addEventListener('click',()=>{
         const projectList = document.querySelector('#projectList');
         projectList.classList.toggle('hide-element');
+        const projectForm = document.querySelector('#project-form');
+        if (!projectForm.classList.contains('hide-element')){
+            projectForm.classList.add('hide-element');
+        }
     })
 
     const projectFormButton = document.querySelector('#addProject');

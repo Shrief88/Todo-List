@@ -127,12 +127,15 @@ body{
     cursor: pointer;
 }
 
+
+
 #projectList div{
     display: flex;
     align-items: center;
     gap: 10px;  
     font-family: 'contentFont';
     font-size: 1.1rem;
+    margin-bottom: 10px;
 }
 
 #project-form{
@@ -241,7 +244,7 @@ body{
     background-color: var(--sidebar-color);
 }
 
-/************************************Add note form*****************************************/
+/************************************Add Task form*****************************************/
 #overlayForm{
     display: none;
     width: 100%;
