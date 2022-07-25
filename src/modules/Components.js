@@ -52,10 +52,21 @@ function createProject(project){
     p.textContent = project;
     container.appendChild(p);
     container.setAttribute('id',project);
+    container.classList.add('project-title');
 
     projectList.insertBefore(container,projectList.firstChild);
 }
 
-export {createTask,createProject};
+function createOption(projectTitle){
+    const projectList = document.querySelector('#project');
+    const option  = document.createElement('option');
+    option.setAttribute('value',projectTitle);
+    option.textContent = projectTitle;
+    projectList.appendChild(option);
+}
+
+
+
+export {createTask,createProject,createOption};
 
 

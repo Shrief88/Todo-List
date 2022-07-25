@@ -9,8 +9,8 @@ const displayController = (()=>{
     })
 
 
-    const addNoteButton = document.querySelector('#addNoteButton');
-    addNoteButton.addEventListener('click',()=>{
+    const addTaskButton = document.querySelector('#addTaskButton');
+    addTaskButton.addEventListener('click',()=>{
         const form = document.querySelector('#overlayForm');
         form.setAttribute('style','display:flex');
     })

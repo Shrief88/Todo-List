@@ -139,12 +139,13 @@ body{
     gap: 10px;  
     font-family: 'contentFont';
     font-size: 1.1rem;
-    margin-bottom: 10px;
+    padding: 5px;
 }
 
 #project-form{
     padding: 0;
     background-color: var(--sidebar-color);
+    gap: 5px;
 }
 
 #project-form .form-element{
@@ -178,6 +179,18 @@ body{
     background-color: red;
     color: var(--brandName-color);
 }
+
+.project-title{
+    margin-bottom: 5px;
+}
+
+.project-title:hover{
+    background-color: var(--sidebarHove-color);
+    border-radius: 5px;
+}
+
+
+
 
 /**********************************************tasks***************************************/
 #content{

@@ -1,4 +1,4 @@
-import {createTask , createProject} from './Components'
+import {createTask , createProject , createOption} from './Components'
 import Task from './task';
 import Project from './project';
 import localStorageHandler from './localStorage';
@@ -7,6 +7,16 @@ import localStorageHandler from './localStorage';
 // this file handle submutting data to our two forms 
 
 const formHandler = (()=>{
+    const addTaskButton = document.querySelector('#addTaskButton');
+    addTaskButton.addEventListener('click',()=>{
+        const projectList = document.querySelector('#project');
+        projectList.textContent="";
+        let myKeys = localStorageHandler.getAllkeys();
+        for(let i=0; i<myKeys.length;i++){
+            createOption(localStorageHandler.getProjectByIndex(i));
+        }
+    })
+
     const taskForm = document.querySelector('#form');
     taskForm.addEventListener('submit',(e)=>{
         e.preventDefault(); //prevent the from reloading 
@@ -37,7 +47,7 @@ const formHandler = (()=>{
         localStorageHandler.setData(newProject);
 
         document.querySelector('#project-title').value = "";
-        createProject(newProject);
+        createProject(title);
     })
 })
 
