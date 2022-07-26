@@ -1,4 +1,5 @@
-import { taskViewer } from "./taskViewer";
+import { taskViewer,displayTasks } from "./taskViewer";
+import localStorageHandler from "./localStorage";
 
 //this file create the html code for new Task or new Project
 
@@ -54,9 +55,10 @@ function createProject(projectTitle){
     p.textContent = projectTitle;
     container.appendChild(p);
     container.setAttribute('id',projectTitle);
-    container.classList.add('project-title');
+    container.classList.add('tast-viewer');
     container.addEventListener('click',()=>{
         taskViewer(container);
+        displayTasks(localStorageHandler.getData(container.querySelector('p').textContent));
     })
     projectList.insertBefore(container,projectList.firstChild);
 }

@@ -180,11 +180,11 @@ body{
     color: var(--brandName-color);
 }
 
-.project-title{
+.tast-viewer{
     margin-bottom: 5px;
 }
 
-.project-title:hover{
+.tast-viewer:hover{
     background-color: var(--sidebarHove-color);
     border-radius: 5px;
     cursor: pointer;

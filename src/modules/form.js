@@ -2,7 +2,6 @@ import {createTask , createProject , createOption} from './Components'
 import Task from './task';
 import Project from './project';
 import localStorageHandler from './localStorage';
-import { taskViewer } from './taskViewer';
 
 
 // this file handle submutting data to our two forms 
@@ -12,8 +11,8 @@ const formHandler = (()=>{
     addTaskButton.addEventListener('click',()=>{
         const projectList = document.querySelector('#project');
         projectList.textContent="";
-        let myKeys = localStorageHandler.getAllkeys();
-        for(let i=0; i<myKeys.length;i++){
+        let myKeysLength = localStorageHandler.getKeysLength();
+        for(let i=0; i<myKeysLength;i++){
             createOption(localStorageHandler.getProjectByIndex(i));
         }
     })
@@ -38,7 +37,11 @@ const formHandler = (()=>{
         form.setAttribute('style','display:none');
 
         const selectedProject = document.querySelector('.selected').querySelector('p').textContent;
-        if(selectedProject === project){
+
+        const todayObject = new Date();
+        const today =  `${todayObject.getFullYear()}-${("0" + (todayObject.getMonth()+1)).slice(-2)
+        }-${("0"+todayObject.getDate()).slice(-2)}`;
+        if(selectedProject === project || dueDate == today){
             createTask(newTask);
         }
     })

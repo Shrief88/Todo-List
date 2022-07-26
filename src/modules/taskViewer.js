@@ -6,9 +6,7 @@ function taskViewer(projectDiv){
     const tasks = document.querySelector('#tasks');
     tasks.textContent="";
     
-    displayTasks(projectDiv.querySelector('p').textContent);
-
-    const projects = document.querySelectorAll('.project-title'); 
+    const projects = document.querySelectorAll('.tast-viewer'); 
     projects.forEach((project)=>{
         project.classList.remove('selected');
     })
@@ -18,12 +16,9 @@ function taskViewer(projectDiv){
 
 
 
-function displayTasks(projectTitle){
-    let myTasks = [];
-    if(localStorageHandler.getData(projectTitle)){
-        myTasks = localStorageHandler.getData(projectTitle);
-    }
-    for (const task of myTasks){
+
+function displayTasks(tasksList){
+    for (const task of tasksList){
         createTask(task);   
     }
 }
