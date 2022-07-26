@@ -40,6 +40,7 @@ function init(){
        createProject(localStorageHandler.getProjectByIndex(i));
     }
 
+    //display todayTasks
     const todayDiv = document.querySelector('#today');
     todayDiv.addEventListener('click',()=>{
         taskViewer(todayDiv);

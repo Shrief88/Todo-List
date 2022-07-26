@@ -1,3 +1,7 @@
+import { format } from 'date-fns'
+
+
+
 const localStorageHandler = (()=>{
     const setData = (project)=>{
         localStorage.setItem(project.title,JSON.stringify(project.tasks));
@@ -17,8 +21,8 @@ const localStorageHandler = (()=>{
 
     const getTodayTasks = ()=>{
         const todayObject = new Date();
-        const today =  `${todayObject.getFullYear()}-${("0" + (todayObject.getMonth()+1)).slice(-2)
-    }-${("0"+todayObject.getDate()).slice(-2)}`;
+        const today = format(new Date(todayObject.getFullYear(),todayObject.getMonth(),todayObject.getDate()),'yyyy-MM-dd');
+        console.log(today);
 
         let myTodayTasks = [];
         let myKeysLength = getKeysLength();
