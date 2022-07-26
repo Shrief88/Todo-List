@@ -187,6 +187,7 @@ body{
 .project-title:hover{
     background-color: var(--sidebarHove-color);
     border-radius: 5px;
+    cursor: pointer;
 }
 
 

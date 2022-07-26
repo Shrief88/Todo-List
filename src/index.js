@@ -3,8 +3,8 @@ import Project from './modules/project'
 import displayController from './modules/displayController'
 import formHandler from './modules/form';
 import localStorageHandler from './modules/localStorage';
-import {createProject, createTask} from './modules/Components'
-
+import {createProject} from './modules/Components';
+import {displayTasks , taskViewer} from './modules/taskViewer';
 
 init();
 
@@ -18,25 +18,30 @@ function init(){
         inbox.setAttribute('id',defaultProject.title);
     }
 
-
     //display all tasks in inbox project
-    let myTasks = [];
-    if(localStorageHandler.getData('inbox')){
-        myTasks = localStorageHandler.getData('inbox');
-    }
-    for (const task of myTasks){
-        createTask(task);
-    }
-
+    displayTasks('inbox');
+    const inbox = document.querySelector('.selected');
+    inbox.addEventListener('click',()=>{
+        taskViewer(inbox);
+    })
+    
     //display all project in local storage
     let myKeys = localStorageHandler.getAllkeys();
-    for(let i=1; i<myKeys.length;i++){
+    for(let i=0; i<myKeys.length;i++){
+       if(localStorageHandler.getProjectByIndex(i)==="inbox"){
+            continue;
+        } 
        createProject(localStorageHandler.getProjectByIndex(i));
     }
 
     displayController();
     formHandler();
 }
+
+
+
+
+
 
 
 

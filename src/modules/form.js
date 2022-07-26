@@ -2,6 +2,7 @@ import {createTask , createProject , createOption} from './Components'
 import Task from './task';
 import Project from './project';
 import localStorageHandler from './localStorage';
+import { taskViewer } from './taskViewer';
 
 
 // this file handle submutting data to our two forms 
@@ -35,7 +36,11 @@ const formHandler = (()=>{
 
         const form = document.querySelector('#overlayForm');
         form.setAttribute('style','display:none');
-        createTask(newTask);
+
+        const selectedProject = document.querySelector('.selected').querySelector('p').textContent;
+        if(selectedProject === project){
+            createTask(newTask);
+        }
     })
 
     const projectForm = document.querySelector('#project-form');

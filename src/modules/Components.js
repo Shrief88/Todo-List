@@ -1,3 +1,5 @@
+import { taskViewer } from "./taskViewer";
+
 //this file create the html code for new Task or new Project
 
 function createTask(task){
@@ -44,16 +46,18 @@ function createimageField(src,title){
     return img;
 }
 
-function createProject(project){
+function createProject(projectTitle){
     const projectList = document.querySelector('#projectList');
 
     const container = document.createElement('div');
     const p = document.createElement('p');
-    p.textContent = project;
+    p.textContent = projectTitle;
     container.appendChild(p);
-    container.setAttribute('id',project);
+    container.setAttribute('id',projectTitle);
     container.classList.add('project-title');
-
+    container.addEventListener('click',()=>{
+        taskViewer(container);
+    })
     projectList.insertBefore(container,projectList.firstChild);
 }
 
