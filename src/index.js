@@ -18,6 +18,11 @@ function init(){
         inbox.setAttribute('id',defaultProject.title);
     }
 
+    // update the date in today icon 
+    const today = document.querySelector('#todayDate');
+    const day = new Date();
+    today.textContent = day.getDate();
+
     //display all tasks in inbox project
     displayTasks('inbox');
     const inbox = document.querySelector('.selected');
