@@ -5,6 +5,7 @@ import formHandler from './modules/form';
 import localStorageHandler from './modules/localStorage';
 import {createProject} from './modules/Components';
 import {displayTasks , taskViewer} from './modules/taskViewer';
+import taskController from './modules/taskController'
 
 init();
 

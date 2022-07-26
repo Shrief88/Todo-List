@@ -191,8 +191,6 @@ body{
 }
 
 
-
-
 /**********************************************tasks***************************************/
 #content{
     flex: 1;
@@ -239,8 +237,12 @@ body{
     font-size: 1.2rem;
 }
 
-
-
+.task-done{
+    text-decoration: line-through;
+    text-decoration-style: solid;
+    text-decoration-thickness: 2px;
+    
+}
 
 
 

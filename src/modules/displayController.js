@@ -1,6 +1,6 @@
 //this file handle all user actions on the page that not related to entering new data
 
-const displayController = (()=>{
+const displayController = ()=>{
     
     const toggleButton = document.querySelector('#toggle-button');
     toggleButton.addEventListener('click',()=>{
@@ -45,6 +45,6 @@ const displayController = (()=>{
     
 
     
-})
+}
 
 export default displayController;

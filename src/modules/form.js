@@ -2,11 +2,11 @@ import {createTask , createProject , createOption} from './Components'
 import Task from './task';
 import Project from './project';
 import localStorageHandler from './localStorage';
-
+import { format } from 'date-fns';
 
 // this file handle submutting data to our two forms 
 
-const formHandler = (()=>{
+const formHandler = ()=>{
     const addTaskButton = document.querySelector('#addTaskButton');
     addTaskButton.addEventListener('click',()=>{
         const projectList = document.querySelector('#project');
@@ -36,14 +36,15 @@ const formHandler = (()=>{
         const form = document.querySelector('#overlayForm');
         form.setAttribute('style','display:none');
 
-        const selectedProject = document.querySelector('.selected').querySelector('p').textContent;
+        const selectedProject = document.querySelector('.selected').id;
 
         const todayObject = new Date();
-        const today =  `${todayObject.getFullYear()}-${("0" + (todayObject.getMonth()+1)).slice(-2)
-        }-${("0"+todayObject.getDate()).slice(-2)}`;
-        if(selectedProject === project || dueDate == today){
+        const today = format(new Date(todayObject.getFullYear(),todayObject.getMonth(),todayObject.getDate()),'yyyy-MM-dd');
+
+        if(newTask.project_id === selectedProject || (selectedProject === "today" && today === dueDate)){
             createTask(newTask);
         }
+        
     })
 
     const projectForm = document.querySelector('#project-form');
@@ -57,6 +58,6 @@ const formHandler = (()=>{
         document.querySelector('#project-title').value = "";
         createProject(title);
     })
-})
+}
 
 export default formHandler;

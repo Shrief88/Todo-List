@@ -1,5 +1,6 @@
 import { taskViewer,displayTasks } from "./taskViewer";
 import localStorageHandler from "./localStorage";
+import taskController from "./taskController";
 
 //this file create the html code for new Task or new Project
 
@@ -10,16 +11,27 @@ function createTask(task){
     container.classList.add('task');
     container.classList.add('bottom-padding');
     container.setAttribute('id',task.id);
+    container.setAttribute('data-project',task.project_id);
 
     const taskInfo1 = document.createElement('div');
     taskInfo1.classList.add('task-info');
 
     const input = document.createElement('input');
     input.setAttribute('type','checkbox');
+    input.classList.add('task-status');
+    if(task.isDone){
+        input.checked = true;
+        container.classList.add('task-done');
+    }
+    input.addEventListener('click',(e)=>{
+        taskController.statusButton(e)
+    })
     taskInfo1.appendChild(input);
+
 
     const p = document.createElement('p');
     p.textContent = task.title;
+    p.classList.add('task-title');
     taskInfo1.appendChild(p);
 
     const taskInfo2 = document.createElement('div');

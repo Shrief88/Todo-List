@@ -1,7 +1,5 @@
 import { format } from 'date-fns'
 
-
-
 const localStorageHandler = (()=>{
     const setData = (project)=>{
         localStorage.setItem(project.title,JSON.stringify(project.tasks));
@@ -22,7 +20,6 @@ const localStorageHandler = (()=>{
     const getTodayTasks = ()=>{
         const todayObject = new Date();
         const today = format(new Date(todayObject.getFullYear(),todayObject.getMonth(),todayObject.getDate()),'yyyy-MM-dd');
-        console.log(today);
 
         let myTodayTasks = [];
         let myKeysLength = getKeysLength();
@@ -37,8 +34,17 @@ const localStorageHandler = (()=>{
         return myTodayTasks;
     }
 
+    const updateTaskStatus = (project_id,task_id)=>{
+        const myTasks = localStorageHandler.getData(project_id);
+        myTasks.map((element)=>{
+        if(element.id == task_id){
+            element.isDone = element.isDone ? false : true;
+        }});
+        localStorage.setItem(project_id,JSON.stringify(myTasks));
+    }
 
-    return {setData , getData , getKeysLength , getProjectByIndex , getTodayTasks};
+    
+    return {setData , getData , getKeysLength , getProjectByIndex , getTodayTasks ,updateTaskStatus};
 })()
 
 export default localStorageHandler;
