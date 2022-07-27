@@ -1,4 +1,5 @@
 import { format } from 'date-fns'
+import { mt } from 'date-fns/locale';
 
 const localStorageHandler = (()=>{
     const setData = (project)=>{
@@ -40,11 +41,20 @@ const localStorageHandler = (()=>{
         if(element.id == task_id){
             element.isDone = element.isDone ? false : true;
         }});
+        console.log(myTasks);
         localStorage.setItem(project_id,JSON.stringify(myTasks));
     }
 
+    const deleteTask =(project_id,task_id)=>{
+        const myTasks = localStorageHandler.getData(project_id);
+        const result = myTasks.filter((element)=>  
+            (element.id != task_id)
+        );
+        localStorage.setItem(project_id,JSON.stringify(result));
+    }
+
     
-    return {setData , getData , getKeysLength , getProjectByIndex , getTodayTasks ,updateTaskStatus};
+    return {setData , getData , getKeysLength , getProjectByIndex , getTodayTasks ,updateTaskStatus,deleteTask};
 })()
 
 export default localStorageHandler;

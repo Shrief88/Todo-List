@@ -7,7 +7,12 @@ const taskController = (()=>{
         localStorageHandler.updateTaskStatus(task.getAttribute("data-project"),task.id)
     }
 
-    return {statusButton}
+    const deleteButton = (e)=>{
+        const task = e.target.parentElement.parentElement;
+        localStorageHandler.deleteTask(task.getAttribute("data-project"),task.id);
+        task.remove();
+    }
+    return {statusButton ,deleteButton}
 })()
 
 export default taskController;

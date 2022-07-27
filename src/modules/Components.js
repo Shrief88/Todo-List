@@ -18,7 +18,6 @@ function createTask(task){
 
     const input = document.createElement('input');
     input.setAttribute('type','checkbox');
-    input.classList.add('task-status');
     if(task.isDone){
         input.checked = true;
         container.classList.add('task-done');
@@ -37,10 +36,14 @@ function createTask(task){
     const taskInfo2 = document.createElement('div');
     taskInfo2.classList.add('task-info');
 
-    taskInfo2.appendChild(createimageField("SVGs/edit.svg","Edit","Edit"));
-    taskInfo2.appendChild(createimageField("SVGs/flag.svg" ,"Change priority" ,"Change priority"))
-    taskInfo2.appendChild(createimageField("SVGs/arrow-right-circle.svg","Move to project", "Move to project"));
-    taskInfo2.appendChild(createimageField("SVGs/trash.svg","Delete" ,"Delete"));
+    const editImage = createimageField("SVGs/edit.svg","Edit","Edit");
+    taskInfo2.appendChild(editImage);
+
+    const deleteImage = createimageField("SVGs/trash.svg","Delete" ,"Delete");
+    deleteImage.addEventListener('click',(e)=>{
+        taskController.deleteButton(e);
+    })
+    taskInfo2.appendChild(deleteImage);
     
     container.appendChild(taskInfo1);
     container.appendChild(taskInfo2);
@@ -55,7 +58,6 @@ function createimageField(src,title){
     img.setAttribute('src',src);
     img.setAttribute('title',title);
     img.setAttribute('alt',title);
-    img.setAttribute('class',title);
     return img;
 }
 
