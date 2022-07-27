@@ -3,6 +3,7 @@ import Task from './task';
 import Project from './project';
 import localStorageHandler from './localStorage';
 import { format } from 'date-fns';
+import { displayTasks } from './taskViewer';
 
 // this file handle submutting data to our two forms 
 
@@ -42,7 +43,7 @@ const formHandler = ()=>{
         const today = format(new Date(todayObject.getFullYear(),todayObject.getMonth(),todayObject.getDate()),'yyyy-MM-dd');
 
         if(newTask.project_id === selectedProject || (selectedProject === "today" && today === dueDate)){
-            createTask(newTask);
+            displayTasks(myProject.tasks);
         }
         
     })

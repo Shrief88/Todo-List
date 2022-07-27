@@ -1,5 +1,6 @@
 import localStorageHandler from "./localStorage";
 
+
 const taskController = (()=>{
     const statusButton = (e)=>{
         const task = e.target.parentElement.parentElement;
@@ -10,9 +11,16 @@ const taskController = (()=>{
     const deleteButton = (e)=>{
         const task = e.target.parentElement.parentElement;
         localStorageHandler.deleteTask(task.getAttribute("data-project"),task.id);
+        task.nextSibling.remove();
         task.remove();
     }
-    return {statusButton ,deleteButton}
+
+    const showInfo = (e)=>{
+        const taskDiv = e.target.parentElement.parentElement;
+        const taskInfo = taskDiv.nextSibling;
+        taskInfo.classList.toggle('hide-element');
+    }
+    return {statusButton ,deleteButton,showInfo};
 })()
 
 export default taskController;

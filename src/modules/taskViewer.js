@@ -1,7 +1,7 @@
-import {createTask} from './Components';
+import {createTask , createTaskInfo} from './Components';
 
 
-function taskViewer(projectDiv){
+function sidebarNavigator(projectDiv){
     const projects = document.querySelectorAll('.tast-viewer'); 
     projects.forEach((project)=>{
         project.classList.remove('selected');
@@ -15,11 +15,13 @@ function displayTasks(tasksList){
     const tasks = document.querySelector('#tasks');
     tasks.textContent="";
     for (const task of tasksList){
-        createTask(task);   
+        createTask(task); 
+        createTaskInfo(task)
     }
 }
 
-export {displayTasks , taskViewer};
+export {displayTasks , sidebarNavigator};
+
 
 
 

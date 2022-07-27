@@ -1,6 +1,7 @@
-import { taskViewer,displayTasks } from "./taskViewer";
+import { sidebarNavigator,displayTasks } from "./taskViewer";
 import localStorageHandler from "./localStorage";
 import taskController from "./taskController";
+
 
 //this file create the html code for new Task or new Project
 
@@ -31,6 +32,9 @@ function createTask(task){
     const p = document.createElement('p');
     p.textContent = task.title;
     p.classList.add('task-title');
+    p.addEventListener('click',(e)=>{
+        taskController.showInfo(e);
+    })
     taskInfo1.appendChild(p);
 
     const taskInfo2 = document.createElement('div');
@@ -71,7 +75,7 @@ function createProject(projectTitle){
     container.setAttribute('id',projectTitle);
     container.classList.add('tast-viewer');
     container.addEventListener('click',()=>{
-        taskViewer(container);
+        sidebarNavigator(container);
         displayTasks(localStorageHandler.getData(container.querySelector('p').textContent));
     })
     projectList.insertBefore(container,projectList.firstChild);
@@ -85,8 +89,42 @@ function createOption(projectTitle){
     projectList.appendChild(option);
 }
 
+function createTaskInfo(task){
+    const tasks = document.querySelector('#tasks');
+
+    const taskDetails = document.createElement('div');
+    taskDetails.classList.add('task-details');
+
+    const leftDiv = document.createElement('div');
+    const taskDescription  = createPElement('Description:',task.description);
+    const taskProject = createPElement('Project:',task.project_id);
+    leftDiv.appendChild(taskDescription);
+    leftDiv.appendChild(taskProject);
+
+    const rightDiv = document.createElement('div');
+    const taskDate = createPElement('Due Date:',task.dueDate);
+    const taskPriority = createPElement('priority:',task.priority);
+    rightDiv.appendChild(taskDate);
+    rightDiv.appendChild(taskPriority);
+
+    taskDetails.appendChild(leftDiv);
+    taskDetails.appendChild(rightDiv);
+
+    taskDetails.classList.add('hide-element');
+
+    tasks.appendChild(taskDetails);
+}
+
+function createPElement(title,info){
+    const p = document.createElement('p');
+    const span = document.createElement('span');
+    p.textContent = title;
+    span.textContent = info;
+    p.appendChild(span);
+    return p;
+}
 
 
-export {createTask,createProject,createOption};
 
+export {createTask,createProject,createOption,createTaskInfo};
 

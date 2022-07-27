@@ -4,7 +4,7 @@ import displayController from './modules/displayController'
 import formHandler from './modules/form';
 import localStorageHandler from './modules/localStorage';
 import {createProject} from './modules/Components';
-import {displayTasks , taskViewer} from './modules/taskViewer';
+import {displayTasks , sidebarNavigator} from './modules/taskViewer';
 import taskController from './modules/taskController'
 
 init();
@@ -28,7 +28,7 @@ function init(){
     displayTasks(localStorageHandler.getData('inbox'));
     const inbox = document.querySelector('.selected');
     inbox.addEventListener('click',()=>{
-        taskViewer(inbox);
+        sidebarNavigator(inbox);
         displayTasks(localStorageHandler.getData('inbox'));
     })
     
@@ -44,7 +44,7 @@ function init(){
     //display todayTasks
     const todayDiv = document.querySelector('#today');
     todayDiv.addEventListener('click',()=>{
-        taskViewer(todayDiv);
+        sidebarNavigator(todayDiv);
         displayTasks(localStorageHandler.getTodayTasks())
     })
 
