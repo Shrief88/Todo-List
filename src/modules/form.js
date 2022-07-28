@@ -8,16 +8,6 @@ import { displayTasks } from './taskViewer';
 // this file handle submutting data to our two forms 
 
 const formHandler = ()=>{
-    const addTaskButton = document.querySelector('#addTaskButton');
-    addTaskButton.addEventListener('click',()=>{
-        const projectList = document.querySelector('#project');
-        projectList.textContent="";
-        let myKeysLength = localStorageHandler.getKeysLength();
-        for(let i=0; i<myKeysLength;i++){
-            createOption(localStorageHandler.getProjectByIndex(i));
-        }
-    })
-
     const taskForm = document.querySelector('#form');
     taskForm.addEventListener('submit',(e)=>{
         e.preventDefault(); //prevent the from reloading 
@@ -41,7 +31,7 @@ const formHandler = ()=>{
 
         const todayObject = new Date();
         const today = format(new Date(todayObject.getFullYear(),todayObject.getMonth(),todayObject.getDate()),'yyyy-MM-dd');
-
+               
         if(newTask.project_id === selectedProject || (selectedProject === "today" && today === dueDate)){
             displayTasks(myProject.tasks);
         }

@@ -53,8 +53,16 @@ const localStorageHandler = (()=>{
         localStorage.setItem(project_id,JSON.stringify(result));
     }
 
+    const getTaskById = (project_id,task_id)=>{
+        const myTasks = localStorageHandler.getData(project_id);
+        const result = myTasks.filter((element)=>  
+            (element.id == task_id)
+        );
+        return result[0];
+    }
+
     
-    return {setData , getData , getKeysLength , getProjectByIndex , getTodayTasks ,updateTaskStatus,deleteTask};
+    return {setData , getData , getKeysLength , getProjectByIndex , getTodayTasks ,updateTaskStatus,deleteTask, getTaskById};
 })()
 
 export default localStorageHandler;

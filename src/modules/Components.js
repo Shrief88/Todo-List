@@ -41,6 +41,9 @@ function createTask(task){
     taskInfo2.classList.add('task-info');
 
     const editImage = createimageField("SVGs/edit.svg","Edit","Edit");
+    editImage.addEventListener('click',(e)=>{
+        taskController.showEidtForm(e);
+    })
     taskInfo2.appendChild(editImage);
 
     const deleteImage = createimageField("SVGs/trash.svg","Delete" ,"Delete");

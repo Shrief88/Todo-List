@@ -1,5 +1,8 @@
-//this file handle all user actions on the page that not related to entering new data
+import { createOption } from "./Components";
+import localStorageHandler from "./localStorage";
 
+
+//this file handle all user actions on the page that not related to entering new data
 const displayController = ()=>{
     
     const toggleButton = document.querySelector('#toggle-button');
@@ -24,8 +27,17 @@ const displayController = ()=>{
 
     const addTaskButton = document.querySelector('#addTaskButton');
     addTaskButton.addEventListener('click',()=>{
+        document.querySelector('#note-title').value='';
+        document.querySelector('#description').value= '';
+        document.querySelector('#due_date').value= '';
         const form = document.querySelector('#overlayForm');
         form.setAttribute('style','display:flex');
+        const projectList = document.querySelector('#project');
+        projectList.textContent="";
+        let myKeysLength = localStorageHandler.getKeysLength();
+        for(let i=0; i<myKeysLength;i++){
+            createOption(localStorageHandler.getProjectByIndex(i));
+        }
     })
 
     const closeFormButton = document.querySelector('#closeForm');
