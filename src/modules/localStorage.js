@@ -1,5 +1,4 @@
 import { format } from 'date-fns'
-import { mt } from 'date-fns/locale';
 
 const localStorageHandler = (()=>{
     const setData = (project)=>{
@@ -10,6 +9,7 @@ const localStorageHandler = (()=>{
         return JSON.parse(localStorage.getItem(key));
     }
 
+    //get number of projects
     const getKeysLength = ()=>{
         return Object.keys(localStorage).length;
     }

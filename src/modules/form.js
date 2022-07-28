@@ -10,6 +10,7 @@ import { displayTasks } from './taskViewer';
 const formHandler = ()=>{
     const taskForm = document.querySelector('#form');
     taskForm.addEventListener('submit',(e)=>{
+        //check if the user open the form from edit task button
         if(taskForm.classList.contains('edit')){
             localStorageHandler.deleteTask(taskForm.getAttribute("data-project"),taskForm.getAttribute('data-id'));
             taskForm.classList.remove('edit');
@@ -34,8 +35,6 @@ const formHandler = ()=>{
         const form = document.querySelector('#overlayForm');
         form.setAttribute('style','display:none');
 
-        
-
         const selectedProject = document.querySelector('.selected').id;
         let selectedProjectTasks = [];
         if(selectedProject !== 'today'){
@@ -43,10 +42,7 @@ const formHandler = ()=>{
         }else{
             selectedProjectTasks = localStorageHandler.getTodayTasks();
         }
-       
         displayTasks(selectedProjectTasks);
-
-       
     })
 
     const projectForm = document.querySelector('#project-form');

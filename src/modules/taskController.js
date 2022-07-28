@@ -1,7 +1,5 @@
-import { ta } from "date-fns/locale";
 import { showTaskForm } from "./displayController";
 import localStorageHandler from "./localStorage";
-
 
 
 const taskController = (()=>{

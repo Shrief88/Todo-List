@@ -5,10 +5,8 @@ import formHandler from './modules/form';
 import localStorageHandler from './modules/localStorage';
 import {createProject} from './modules/Components';
 import {displayTasks , sidebarNavigator} from './modules/taskViewer';
-import taskController from './modules/taskController'
 
 init();
-
 
 function init(){
     //this code will only run at the first time a user open the website

@@ -1,6 +1,6 @@
 import {createTask , createTaskInfo} from './Components';
 
-
+//show a hover effect on the folder the user selected
 function sidebarNavigator(projectDiv){
     const projects = document.querySelectorAll('.tast-viewer'); 
     projects.forEach((project)=>{

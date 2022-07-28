@@ -3,7 +3,7 @@ import localStorageHandler from "./localStorage";
 import taskController from "./taskController";
 
 
-//this file create the html code for new Task or new Project
+//this file create new elements on the screen
 
 function createTask(task){
     const tasks = document.querySelector('#tasks');
@@ -57,7 +57,6 @@ function createTask(task){
 
 
     tasks.appendChild(container);
-
 }
 
 function createimageField(src,title){

@@ -5,13 +5,17 @@ import localStorageHandler from "./localStorage";
 //this file handle all user actions on the page that not related to entering new data
 
 function showTaskForm(){
+    // set all form fields to empty
     document.querySelector('#note-title').value='';
     document.querySelector('#description').value= '';
     document.querySelector('#due_date').value= '';
     document.querySelector('#project').value = 'inbox';
     document.querySelector('#priority').value = 'low';
+
     const form = document.querySelector('#overlayForm');
     form.setAttribute('style','display:flex');
+
+    //show the list of project in project selection field
     const projectList = document.querySelector('#project');
     projectList.textContent="";
     let myKeysLength = localStorageHandler.getKeysLength();
@@ -26,6 +30,8 @@ const displayController = ()=>{
     toggleButton.addEventListener('click',()=>{
         const sidebar = document.querySelector('#sidebar');
         const container = document.querySelector('#container');
+
+        //if screen side less than 900px add overlay div under the sidebar when you click the button
         if(window.innerWidth < 900){
             if(sidebar.classList.contains('hide-element')){
                 const overlayDiv = document.createElement('div');
@@ -51,6 +57,8 @@ const displayController = ()=>{
         const form = document.querySelector('#overlayForm');
         form.setAttribute('style','display:none');
         const taskForm = document.querySelector('#form');
+
+        //remove the data that we add when the user click the edit button
         taskForm.classList.remove('edit');
         taskForm.removeAttribute('data-id');
         taskForm.removeAttribute('data-project');
@@ -60,6 +68,8 @@ const displayController = ()=>{
     projectButton.addEventListener('click',()=>{
         const projectList = document.querySelector('#projectList');
         projectList.classList.toggle('hide-element');
+
+        //make sure than the project form is not showing
         const projectForm = document.querySelector('#project-form');
         if (!projectForm.classList.contains('hide-element')){
             projectForm.classList.add('hide-element');
@@ -78,12 +88,12 @@ const displayController = ()=>{
         projectForm.classList.toggle('hide-element');
     })
 
-   
+    //in smaller screen we hide the sidebar by default
     if(window.innerWidth < 900){
         const sidebar = document.querySelector('#sidebar');
         sidebar.classList.add('hide-element');
     }
-    
+
     window.addEventListener('resize',()=>{
         const sidebar = document.querySelector('#sidebar');
         if(window.innerWidth < 900){
