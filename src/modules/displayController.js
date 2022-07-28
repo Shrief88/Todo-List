@@ -5,9 +5,22 @@ const displayController = ()=>{
     const toggleButton = document.querySelector('#toggle-button');
     toggleButton.addEventListener('click',()=>{
         const sidebar = document.querySelector('#sidebar');
+        const container = document.querySelector('#container');
+        if(window.innerWidth < 900){
+            if(sidebar.classList.contains('hide-element')){
+                const overlayDiv = document.createElement('div');
+                container.appendChild(overlayDiv);
+                overlayDiv.appendChild(sidebar);
+                overlayDiv.setAttribute('id','overlay');
+            }
+            else{
+                const overlayDiv = document.querySelector('#overlay');
+                container.insertBefore(sidebar,container.firstChild);
+                overlayDiv.remove();
+            } 
+        }
         sidebar.classList.toggle('hide-element')
     })
-
 
     const addTaskButton = document.querySelector('#addTaskButton');
     addTaskButton.addEventListener('click',()=>{
@@ -42,9 +55,22 @@ const displayController = ()=>{
         const projectForm = document.querySelector('#project-form');
         projectForm.classList.toggle('hide-element');
     })
-    
 
+   
+    if(window.innerWidth < 900){
+        const sidebar = document.querySelector('#sidebar');
+        sidebar.classList.add('hide-element');
+    }
     
+    window.addEventListener('resize',()=>{
+        const sidebar = document.querySelector('#sidebar');
+        if(window.innerWidth < 900){
+            sidebar.classList.add('hide-element');
+        }
+        else{
+            sidebar.classList.remove('hide-element');
+        }
+    })
 }
 
 export default displayController;
