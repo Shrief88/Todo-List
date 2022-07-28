@@ -41,7 +41,6 @@ const localStorageHandler = (()=>{
         if(element.id == task_id){
             element.isDone = element.isDone ? false : true;
         }});
-        console.log(myTasks);
         localStorage.setItem(project_id,JSON.stringify(myTasks));
     }
 

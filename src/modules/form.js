@@ -10,6 +10,13 @@ import { displayTasks } from './taskViewer';
 const formHandler = ()=>{
     const taskForm = document.querySelector('#form');
     taskForm.addEventListener('submit',(e)=>{
+        if(taskForm.classList.contains('edit')){
+            localStorageHandler.deleteTask(taskForm.getAttribute("data-project"),taskForm.getAttribute('data-id'));
+            taskForm.classList.remove('edit');
+            taskForm.removeAttribute("data-project");
+            taskForm.removeAttribute("data-id");
+        }
+
         e.preventDefault(); //prevent the from reloading 
 
         let title = document.querySelector('#note-title').value;
@@ -27,15 +34,19 @@ const formHandler = ()=>{
         const form = document.querySelector('#overlayForm');
         form.setAttribute('style','display:none');
 
-        const selectedProject = document.querySelector('.selected').id;
-
-        const todayObject = new Date();
-        const today = format(new Date(todayObject.getFullYear(),todayObject.getMonth(),todayObject.getDate()),'yyyy-MM-dd');
-               
-        if(newTask.project_id === selectedProject || (selectedProject === "today" && today === dueDate)){
-            displayTasks(myProject.tasks);
-        }
         
+
+        const selectedProject = document.querySelector('.selected').id;
+        let selectedProjectTasks = [];
+        if(selectedProject !== 'today'){
+            selectedProjectTasks = localStorageHandler.getData(selectedProject);
+        }else{
+            selectedProjectTasks = localStorageHandler.getTodayTasks();
+        }
+       
+        displayTasks(selectedProjectTasks);
+
+       
     })
 
     const projectForm = document.querySelector('#project-form');

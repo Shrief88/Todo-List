@@ -1,6 +1,6 @@
 import './style.css';
 import Project from './modules/project'
-import displayController from './modules/displayController'
+import {displayController} from './modules/displayController'
 import formHandler from './modules/form';
 import localStorageHandler from './modules/localStorage';
 import {createProject} from './modules/Components';

@@ -1,5 +1,7 @@
 import { ta } from "date-fns/locale";
+import { showTaskForm } from "./displayController";
 import localStorageHandler from "./localStorage";
+
 
 
 const taskController = (()=>{
@@ -25,12 +27,18 @@ const taskController = (()=>{
     const showEidtForm = (e)=>{
         const taskDiv = e.target.parentElement.parentElement;
         const task = localStorageHandler.getTaskById(taskDiv.getAttribute("data-project"),taskDiv.id);
-        document.querySelector('#note-title').value= task.title;
+        showTaskForm();
+        document.querySelector('#note-title').value=task.title;
         document.querySelector('#description').value= task.description;
         document.querySelector('#due_date').value= task.dueDate;
-        const form = document.querySelector('#overlayForm');
-        form.setAttribute('style','display:flex');
+        document.querySelector('#project').value = task.project_id;
+        document.querySelector('#priority').value = task.priority;
+  
 
+        const taskForm = document.querySelector('#form');
+        taskForm.classList.add('edit');
+        taskForm.setAttribute('data-id',task.id);
+        taskForm.setAttribute('data-project',task.project_id);
     }
 
     return {statusButton ,deleteButton,showInfo , showEidtForm};

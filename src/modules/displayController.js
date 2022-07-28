@@ -3,6 +3,23 @@ import localStorageHandler from "./localStorage";
 
 
 //this file handle all user actions on the page that not related to entering new data
+
+function showTaskForm(){
+    document.querySelector('#note-title').value='';
+    document.querySelector('#description').value= '';
+    document.querySelector('#due_date').value= '';
+    document.querySelector('#project').value = 'inbox';
+    document.querySelector('#priority').value = 'low';
+    const form = document.querySelector('#overlayForm');
+    form.setAttribute('style','display:flex');
+    const projectList = document.querySelector('#project');
+    projectList.textContent="";
+    let myKeysLength = localStorageHandler.getKeysLength();
+    for(let i=0; i<myKeysLength;i++){
+        createOption(localStorageHandler.getProjectByIndex(i));
+    }
+}   
+
 const displayController = ()=>{
     
     const toggleButton = document.querySelector('#toggle-button');
@@ -26,24 +43,17 @@ const displayController = ()=>{
     })
 
     const addTaskButton = document.querySelector('#addTaskButton');
-    addTaskButton.addEventListener('click',()=>{
-        document.querySelector('#note-title').value='';
-        document.querySelector('#description').value= '';
-        document.querySelector('#due_date').value= '';
-        const form = document.querySelector('#overlayForm');
-        form.setAttribute('style','display:flex');
-        const projectList = document.querySelector('#project');
-        projectList.textContent="";
-        let myKeysLength = localStorageHandler.getKeysLength();
-        for(let i=0; i<myKeysLength;i++){
-            createOption(localStorageHandler.getProjectByIndex(i));
-        }
-    })
+    addTaskButton.addEventListener('click',showTaskForm)
+    
 
     const closeFormButton = document.querySelector('#closeForm');
     closeFormButton.addEventListener('click',()=>{
         const form = document.querySelector('#overlayForm');
         form.setAttribute('style','display:none');
+        const taskForm = document.querySelector('#form');
+        taskForm.classList.remove('edit');
+        taskForm.removeAttribute('data-id');
+        taskForm.removeAttribute('data-project');
     })
 
     const projectButton = document.querySelector('#showProjects');
@@ -85,4 +95,4 @@ const displayController = ()=>{
     })
 }
 
-export default displayController;
+export  {displayController , showTaskForm};
