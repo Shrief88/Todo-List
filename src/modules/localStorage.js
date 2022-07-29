@@ -1,67 +1,68 @@
-import { format } from 'date-fns'
+import { format } from 'date-fns';
 
-const localStorageHandler = (()=>{
-    const setData = (project)=>{
-        localStorage.setItem(project.title,JSON.stringify(project.tasks));
-    }
+/* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
 
-    const getData = (key)=>{
-        return JSON.parse(localStorage.getItem(key));
-    }
+const localStorageHandler = (() => {
+  const setData = (project) => {
+    localStorage.setItem(project.title, JSON.stringify(project.tasks));
+  };
 
-    //get number of projects
-    const getKeysLength = ()=>{
-        return Object.keys(localStorage).length;
-    }
+  const getData = (key) => JSON.parse(localStorage.getItem(key));
 
-    const getProjectByIndex = (index)=>{
-        return localStorage.key(index);
-    }
+  // get number of projects
+  const getKeysLength = () => Object.keys(localStorage).length;
 
-    const getTodayTasks = ()=>{
-        const todayObject = new Date();
-        const today = format(new Date(todayObject.getFullYear(),todayObject.getMonth(),todayObject.getDate()),'yyyy-MM-dd');
+  const getProjectByIndex = (index) => localStorage.key(index);
 
-        let myTodayTasks = [];
-        let myKeysLength = getKeysLength();
-        for(let i=0; i<myKeysLength;i++){
-            const tasks = getData(getProjectByIndex(i));
-            for(const task of tasks){
-                if (today === task.dueDate){
-                    myTodayTasks.push(task);
-                }
-            }
+  const getTodayTasks = () => {
+    const todayObject = new Date();
+    const today = format(new Date(todayObject.getFullYear(), todayObject.getMonth(), todayObject.getDate()), 'yyyy-MM-dd');
+
+    const myTodayTasks = [];
+    const myKeysLength = getKeysLength();
+    for (let i = 0; i < myKeysLength; i++) {
+      const tasks = getData(getProjectByIndex(i));
+      for (const task of tasks) {
+        if (today === task.dueDate) {
+          myTodayTasks.push(task);
         }
-        return myTodayTasks;
+      }
     }
+    return myTodayTasks;
+  };
 
-    const updateTaskStatus = (project_id,task_id)=>{
-        const myTasks = localStorageHandler.getData(project_id);
-        myTasks.map((element)=>{
-        if(element.id == task_id){
-            element.isDone = element.isDone ? false : true;
-        }});
-        localStorage.setItem(project_id,JSON.stringify(myTasks));
-    }
+  const updateTaskStatus = (projectId, taskId) => {
+    const myTasks = localStorageHandler.getData(projectId);
+    myTasks.map((element) => {
+      if (element.id == taskId) {
+        element.isDone = !element.isDone;
+      }
+    });
+    localStorage.setItem(projectId, JSON.stringify(myTasks));
+  };
 
-    const deleteTask =(project_id,task_id)=>{
-        const myTasks = localStorageHandler.getData(project_id);
-        const result = myTasks.filter((element)=>  
-            (element.id != task_id)
-        );
-        localStorage.setItem(project_id,JSON.stringify(result));
-    }
+  const deleteTask = (projectId, taskId) => {
+    const myTasks = localStorageHandler.getData(projectId);
+    const result = myTasks.filter((element) => (element.id != taskId));
+    localStorage.setItem(projectId, JSON.stringify(result));
+  };
 
-    const getTaskById = (project_id,task_id)=>{
-        const myTasks = localStorageHandler.getData(project_id);
-        const result = myTasks.filter((element)=>  
-            (element.id == task_id)
-        );
-        return result[0];
-    }
+  const getTaskById = (projectId, taskId) => {
+    const myTasks = localStorageHandler.getData(projectId);
+    const result = myTasks.filter((element) => (element.id == taskId));
+    return result[0];
+  };
 
-    
-    return {setData , getData , getKeysLength , getProjectByIndex , getTodayTasks ,updateTaskStatus,deleteTask, getTaskById};
-})()
+  return {
+    setData,
+    getData,
+    getKeysLength,
+    getProjectByIndex,
+    getTodayTasks,
+    updateTaskStatus,
+    deleteTask,
+    getTaskById,
+  };
+})();
 
 export default localStorageHandler;
