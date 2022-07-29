@@ -253,21 +253,24 @@ body{
     text-decoration: line-through;
     text-decoration-style: solid;
     text-decoration-thickness: 2px;
-    
 }
 
 .task-details{
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     justify-content: space-between;
     border: 3px solid var(--paddingBottom-color);
     padding: 10px 30px;
-    gap: 5px;
+    gap: 20px;
+   
 }
 
 .task-details div{
     display: flex;
     flex-direction: column;
     gap: 10px;
+    justify-content: space-between;
+    overflow:auto
 }
 
 .task-details div span{
@@ -277,7 +280,8 @@ body{
 }
 
 .task-details div p{
-    font-family: 'contentFont';  
+    font-family: 'contentFont'; 
+    text-align: justify;
 }
 
 
@@ -455,9 +459,6 @@ form{
     #overlay{
         margin-top: 71px;
     }
-
-
-
 }
 
 
