@@ -423,10 +423,10 @@ form{
         grid-template-columns: 1fr;
     }
 
-    #sidebar{
-        position: absolute;
-       height: 100vh;
+    #container{
+        flex-direction: column;
     }
+   
 }
 
 @media only screen and (max-width : 600px) {
