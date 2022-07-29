@@ -104,7 +104,7 @@ function createTaskInfo(task){
     leftDiv.appendChild(taskProject);
 
     const rightDiv = document.createElement('div');
-    const taskDate = createPElement('Due Date:',task.dueDate);
+    const taskDate = createPElement('Due Date:',task.dueDate)
     const taskPriority = createPElement('priority:',task.priority);
     rightDiv.appendChild(taskDate);
     rightDiv.appendChild(taskPriority);

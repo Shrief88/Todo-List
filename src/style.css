@@ -459,6 +459,11 @@ form{
     #overlay{
         margin-top: 71px;
     }
+
+    .task-details div span{
+        padding-left: 2px;
+        font-size: 0.9rem;
+    }
 }
 
 

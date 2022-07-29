@@ -94,15 +94,15 @@ const displayController = ()=>{
         sidebar.classList.add('hide-element');
     }
 
-    window.addEventListener('resize',()=>{
-        const sidebar = document.querySelector('#sidebar');
-        if(window.innerWidth < 900){
-            sidebar.classList.add('hide-element');
-        }
-        else{
-            sidebar.classList.remove('hide-element');
-        }
-    })
+    // window.addEventListener('resize',()=>{
+    //     const sidebar = document.querySelector('#sidebar');
+    //     if(window.innerWidth < 900){
+    //         sidebar.classList.add('hide-element');
+    //     }
+    //     else{
+    //         sidebar.classList.remove('hide-element');
+    //     }
+    // })
 }
 
 export  {displayController , showTaskForm};
