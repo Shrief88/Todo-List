@@ -9,22 +9,28 @@ const localStorageHandler = (() => {
 
   const getData = (key) => JSON.parse(localStorage.getItem(key));
 
-  // get number of projects
-  const getKeysLength = () => Object.keys(localStorage).length;
-
   const getProjectByIndex = (index) => localStorage.key(index);
+
+  const getKeys = () => {
+    const keys = [];
+    const myKeysLength = Object.keys(localStorage).length;
+    for (let i = 0; i < myKeysLength; i++) {
+      keys.push(getProjectByIndex(i));
+    }
+    return keys;
+  };
 
   const getTodayTasks = () => {
     const todayObject = new Date();
     const today = format(new Date(todayObject.getFullYear(), todayObject.getMonth(), todayObject.getDate()), 'yyyy-MM-dd');
 
     const myTodayTasks = [];
-    const myKeysLength = getKeysLength();
+    const myKeysLength = Object.keys(localStorage).length;
     for (let i = 0; i < myKeysLength; i++) {
       const tasks = getData(getProjectByIndex(i));
-      for (const task of tasks) {
-        if (today === task.dueDate) {
-          myTodayTasks.push(task);
+      for (let j = 0; j < tasks.length; j++) {
+        if (today === tasks[j].dueDate) {
+          myTodayTasks.push(tasks[j]);
         }
       }
     }
@@ -34,7 +40,7 @@ const localStorageHandler = (() => {
   const updateTaskStatus = (projectId, taskId) => {
     const myTasks = localStorageHandler.getData(projectId);
     myTasks.map((element) => {
-      if (element.id == taskId) {
+      if (element.id === Number(taskId)) {
         element.isDone = !element.isDone;
       }
     });
@@ -43,20 +49,20 @@ const localStorageHandler = (() => {
 
   const deleteTask = (projectId, taskId) => {
     const myTasks = localStorageHandler.getData(projectId);
-    const result = myTasks.filter((element) => (element.id != taskId));
+    const result = myTasks.filter((element) => (element.id !== Number(taskId)));
     localStorage.setItem(projectId, JSON.stringify(result));
   };
 
   const getTaskById = (projectId, taskId) => {
     const myTasks = localStorageHandler.getData(projectId);
-    const result = myTasks.filter((element) => (element.id == taskId));
+    const result = myTasks.filter((element) => (element.id === Number(taskId)));
     return result[0];
   };
 
   return {
     setData,
     getData,
-    getKeysLength,
+    getKeys,
     getProjectByIndex,
     getTodayTasks,
     updateTaskStatus,

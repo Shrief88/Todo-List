@@ -1,10 +1,9 @@
 import './style.css';
 import Project from './modules/project';
-import { displayController } from './modules/displayController';
 import formHandler from './modules/form';
 import localStorageHandler from './modules/localStorage';
-import { createProject } from './modules/Components';
-import { displayTasks, sidebarNavigator } from './modules/taskViewer';
+import { createProject, displayTasks, sidebarNavigator } from './modules/projectDiv';
+import displayController from './modules/displayController';
 
 /* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
 
@@ -31,12 +30,12 @@ function init() {
   });
 
   // display all project in local storage
-  const myKeysLength = localStorageHandler.getKeysLength();
-  for (let i = 0; i < myKeysLength; i++) {
-    if (localStorageHandler.getProjectByIndex(i) === 'inbox') {
+  const myKeys = localStorageHandler.getKeys();
+  for (let i = 0; i < myKeys.length; i++) {
+    if (myKeys[i] === 'inbox') {
       continue;
     }
-    createProject(localStorageHandler.getProjectByIndex(i));
+    createProject(myKeys[i]);
   }
 
   // display todayTasks

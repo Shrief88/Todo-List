@@ -1,8 +1,40 @@
-import { sidebarNavigator, displayTasks } from './taskViewer';
+import showTaskForm from './formDiv';
 import localStorageHandler from './localStorage';
-import taskController from './taskController';
 
-// this file create new elements on the screen
+function statusButton(e) {
+  const task = e.target.parentElement.parentElement;
+  task.classList.toggle('task-done');
+  localStorageHandler.updateTaskStatus(task.getAttribute('data-project'), task.id);
+}
+
+function deleteButton(e) {
+  const task = e.target.parentElement.parentElement;
+  localStorageHandler.deleteTask(task.getAttribute('data-project'), task.id);
+  task.nextSibling.remove();
+  task.remove();
+}
+
+function showInfo(e) {
+  const taskDiv = e.target.parentElement.parentElement;
+  const taskInfo = taskDiv.nextSibling;
+  taskInfo.classList.toggle('hide-element');
+}
+
+function showEidtForm(e) {
+  const taskDiv = e.target.parentElement.parentElement;
+  const task = localStorageHandler.getTaskById(taskDiv.getAttribute('data-project'), taskDiv.id);
+  showTaskForm();
+  document.querySelector('#note-title').value = task.title;
+  document.querySelector('#description').value = task.description;
+  document.querySelector('#due_date').value = task.dueDate;
+  document.querySelector('#project').value = task.project_id;
+  document.querySelector('#priority').value = task.priority;
+
+  const taskForm = document.querySelector('#form');
+  taskForm.classList.add('edit');
+  taskForm.setAttribute('data-id', task.id);
+  taskForm.setAttribute('data-project', task.project_id);
+}
 
 function createimageField(src, title) {
   const img = document.createElement('img');
@@ -31,7 +63,7 @@ function createTask(task) {
     container.classList.add('task-done');
   }
   input.addEventListener('click', (e) => {
-    taskController.statusButton(e);
+    statusButton(e);
   });
   taskInfo1.appendChild(input);
 
@@ -39,7 +71,7 @@ function createTask(task) {
   p.textContent = task.title;
   p.classList.add('task-title');
   p.addEventListener('click', (e) => {
-    taskController.showInfo(e);
+    showInfo(e);
   });
   taskInfo1.appendChild(p);
 
@@ -48,13 +80,13 @@ function createTask(task) {
 
   const editImage = createimageField('SVGs/edit.svg', 'Edit', 'Edit');
   editImage.addEventListener('click', (e) => {
-    taskController.showEidtForm(e);
+    showEidtForm(e);
   });
   taskInfo2.appendChild(editImage);
 
   const deleteImage = createimageField('SVGs/trash.svg', 'Delete', 'Delete');
   deleteImage.addEventListener('click', (e) => {
-    taskController.deleteButton(e);
+    deleteButton(e);
   });
   taskInfo2.appendChild(deleteImage);
 
@@ -62,30 +94,6 @@ function createTask(task) {
   container.appendChild(taskInfo2);
 
   tasks.appendChild(container);
-}
-
-function createProject(projectTitle) {
-  const projectList = document.querySelector('#projectList');
-
-  const container = document.createElement('div');
-  const p = document.createElement('p');
-  p.textContent = projectTitle;
-  container.appendChild(p);
-  container.setAttribute('id', projectTitle);
-  container.classList.add('tast-viewer');
-  container.addEventListener('click', () => {
-    sidebarNavigator(container);
-    displayTasks(localStorageHandler.getData(container.querySelector('p').textContent));
-  });
-  projectList.insertBefore(container, projectList.firstChild);
-}
-
-function createOption(projectTitle) {
-  const projectList = document.querySelector('#project');
-  const option = document.createElement('option');
-  option.setAttribute('value', projectTitle);
-  option.textContent = projectTitle;
-  projectList.appendChild(option);
 }
 
 function createPElement(title, info) {
@@ -123,6 +131,4 @@ function createTaskInfo(task) {
   tasks.appendChild(taskDetails);
 }
 
-export {
-  createTask, createProject, createOption, createTaskInfo,
-};
+export { createTask, createTaskInfo };

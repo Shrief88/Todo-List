@@ -1,8 +1,7 @@
-import { createProject } from './Components';
 import Task from './task';
 import Project from './project';
 import localStorageHandler from './localStorage';
-import { displayTasks } from './taskViewer';
+import { createProject, displayTasks } from './projectDiv';
 
 // this file handle submutting data to our two forms
 

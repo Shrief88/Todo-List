@@ -1,28 +1,7 @@
-import { createOption } from './Components';
-import localStorageHandler from './localStorage';
+import showTaskForm from './formDiv';
 
 /* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
 // this file handle all user actions on the page that not related to entering new data
-
-function showTaskForm() {
-  // set all form fields to empty
-  document.querySelector('#note-title').value = '';
-  document.querySelector('#description').value = '';
-  document.querySelector('#due_date').value = '';
-  document.querySelector('#project').value = 'inbox';
-  document.querySelector('#priority').value = 'low';
-
-  const form = document.querySelector('#overlayForm');
-  form.setAttribute('style', 'display:flex');
-
-  // show the list of project in project selection field
-  const projectList = document.querySelector('#project');
-  projectList.textContent = '';
-  const myKeysLength = localStorageHandler.getKeysLength();
-  for (let i = 0; i < myKeysLength; i++) {
-    createOption(localStorageHandler.getProjectByIndex(i));
-  }
-}
 
 const displayController = () => {
   const toggleButton = document.querySelector('#toggle-button');
@@ -77,4 +56,4 @@ const displayController = () => {
   }
 };
 
-export { displayController, showTaskForm };
+export default displayController;
