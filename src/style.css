@@ -55,6 +55,9 @@ body{
 
 .left-padding{
     padding-left: 40px !important;
+    display: flex;
+    flex-direction: column;
+    gap:8px;
 }
 
 .bottom-padding{
@@ -192,14 +195,19 @@ body{
     color: var(--brandName-color);
 }
 
-.tast-viewer{
-    margin-bottom: 5px;
+.task-viewer{
+    display: flex;
 }
 
-.tast-viewer:hover{
+.task-viewer:hover{
     background-color: var(--sidebarHove-color);
     border-radius: 5px;
     cursor: pointer;
+}
+
+.removable-project{
+    display: flex;
+    justify-content: space-between;
 }
 
 
@@ -454,10 +462,6 @@ form{
 
     #navbar{
         padding-right: 25px;
-    }
-
-    #overlay{
-        margin-top: 71px;
     }
 
     .task-details div span{

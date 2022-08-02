@@ -59,6 +59,8 @@ const localStorageHandler = (() => {
     return result[0];
   };
 
+  const deleteProject = (key) => localStorage.removeItem(key);
+
   return {
     setData,
     getData,
@@ -68,6 +70,7 @@ const localStorageHandler = (() => {
     updateTaskStatus,
     deleteTask,
     getTaskById,
+    deleteProject,
   };
 })();
 
